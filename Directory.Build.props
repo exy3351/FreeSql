@@ -1,5 +1,8 @@
 ﻿<Project>
 	<PropertyGroup>
+		<TargetFrameworks>net48;net5.0;net6.0;</TargetFrameworks>
+		<LangVersion>preview</LangVersion>
+		
 		<RepositoryUrl>https://github.com/dotnetcore/FreeSql</RepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>

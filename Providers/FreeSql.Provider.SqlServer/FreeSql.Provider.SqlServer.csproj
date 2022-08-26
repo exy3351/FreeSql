@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net60;net50;net451;net45;net40</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>FreeSql;ncc;YeXiangQin</Authors>
 		<Description>FreeSql 数据库实现，基于 SqlServer 2005+，并根据版本适配分页方法：row_number 或 offset fetch next</Description>
@@ -25,10 +24,10 @@
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net451'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
 		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
 	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net60' or '$(TargetFramework)' == 'net50'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net5.0'">
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="2.1.4" />
 	</ItemGroup>
 
@@ -36,14 +35,14 @@
 		<ProjectReference Include="..\..\FreeSql\FreeSql.csproj" />
 	</ItemGroup>
 
-	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'net60' or '$(TargetFramework)' == 'net50'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net5.0'">
 		<DefineConstants>microsoft</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
 		<DefineConstants>net40</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net60'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
 		<DefineConstants>net60;microsoft</DefineConstants>
 	</PropertyGroup>
-	
+
 </Project>

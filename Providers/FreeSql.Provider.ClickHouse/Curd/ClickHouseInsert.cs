@@ -85,24 +85,24 @@ namespace FreeSql.ClickHouse.Curd
 
         private IDictionary<string, object> GetValue<T>(T u, System.Reflection.PropertyInfo[] columns)
         {
-            try
+
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            foreach (var item in columns)
             {
-                Dictionary<string, object> dic = new Dictionary<string, object>();
-                foreach (var item in columns)
+                object v = null;
+                if (u != null)
                 {
-                    object v = null;
-                    if (u != null)
-                    {
-                        v = item.GetValue(u);
-                    }
-                    dic.TryAdd(item.Name, v);
+                    v = item.GetValue(u);
                 }
-                return dic;
+#if net
+                    dic.TryAdd(item.Name, v);
+#else
+                dic.Add(item.Name, v);
+#endif
+
             }
-            catch
-            {
-                throw;
-            }
+            return dic;
+
         }
 
         protected override long RawExecuteIdentity()
@@ -150,8 +150,7 @@ namespace FreeSql.ClickHouse.Curd
             return ret;
         }
 
-#if net40
-#else
+
         public override Task<int> ExecuteAffrowsAsync(CancellationToken cancellationToken = default) => SplitExecuteAffrowsAsync(_batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, _batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, cancellationToken);
         public override Task<long> ExecuteIdentityAsync(CancellationToken cancellationToken = default) => SplitExecuteIdentityAsync(_batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, _batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, cancellationToken);
         public override Task<List<T1>> ExecuteInsertedAsync(CancellationToken cancellationToken = default) => SplitExecuteInsertedAsync(_batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, _batchValuesLimit > 0 ? _batchValuesLimit : int.MaxValue, cancellationToken);
@@ -430,6 +429,5 @@ namespace FreeSql.ClickHouse.Curd
             }
             return ret;
         }
-#endif
     }
 }

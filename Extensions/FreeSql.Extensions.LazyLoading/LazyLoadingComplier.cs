@@ -9,7 +9,7 @@ namespace FreeSql.Extensions.LazyLoading
     public class LazyLoadingComplier
     {
 
-#if ns20
+#if NET
         //public static Assembly CompileCode(string cscode)
         //{
         //    Natasha.AssemblyComplier complier = new Natasha.AssemblyComplier();
