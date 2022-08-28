@@ -14,15 +14,18 @@
 		<Title>$(AssemblyName)</Title>
 		<IsPackable>true</IsPackable>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<Version>3.2.666-preview20220826</Version>
+		<!--<Version>3.2.666-preview20220826</Version>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
 		<None Include="lib\DmProvider\netstandard2.0\DmProvider.dll" Pack="true" PackagePath="\lib\netstandard2.0\" />
 		<None Include="lib\DmProvider\netcoreapp31\DmProvider.dll" Pack="true" PackagePath="\lib\netcoreapp31\" />
+		<None Include="lib\DmProvider\netcoreapp31\DmProvider.dll" Pack="true" PackagePath="\lib\net5.0\" />
+		<None Include="lib\DmProvider\netcoreapp31\DmProvider.dll" Pack="true" PackagePath="\lib\net6.0\" />
 		<None Include="lib\DmProvider\net40\DmProvider.dll" Pack="true" PackagePath="\lib\net45\" />
 		<None Include="lib\DmProvider\net40\DmProvider.dll" Pack="true" PackagePath="\lib\net40\" />
+		<None Include="lib\DmProvider\net40\DmProvider.dll" Pack="true" PackagePath="\lib\net48\" />
 		<None Include="lib/**/*.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
@@ -42,6 +45,7 @@
 	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
 		<DefineConstants>ns20;netstandard20</DefineConstants>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
 		<DefineConstants>net40</DefineConstants>
 	</PropertyGroup>

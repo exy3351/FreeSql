@@ -14,13 +14,15 @@
 		<Title>$(AssemblyName)</Title>
 		<IsPackable>true</IsPackable>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<Version>3.2.666-preview20220826</Version>
+		<!--<Version>3.2.666-preview20220826</Version>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
+		<None Include="lib\System.Data.OscarClient.dll" Pack="true" PackagePath="\lib\net48\" />
 		<None Include="lib\System.Data.OscarClient.dll" Pack="true" PackagePath="\lib\net45\" />
 		<None Include="lib\System.Data.OscarClient.dll" Pack="true" PackagePath="\lib\net40\" />
+		<None Include="lib\Mono.Security.dll" Pack="true" PackagePath="\lib\net48\" />
 		<None Include="lib\Mono.Security.dll" Pack="true" PackagePath="\lib\net45\" />
 		<None Include="lib\Mono.Security.dll" Pack="true" PackagePath="\lib\net40\" />
 		<None Include="lib/**/*.dll">
@@ -32,10 +34,11 @@
 		<ProjectReference Include="..\..\FreeSql\FreeSql.csproj" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net6.0'">
 		<PackageReference Include="Oscar.Data.SqlClient" Version="4.0.5" />
 	</ItemGroup>
-	<ItemGroup Condition="'$(TargetFramework)' != 'netstandard2.0'">
+	
+	<ItemGroup Condition="'$(TargetFramework)' == 'net48'">
 		<Reference Include="System.Data.OscarClient">
 			<HintPath>lib\System.Data.OscarClient.dll</HintPath>
 			<Private>false</Private>
@@ -45,6 +48,7 @@
 	<PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
 		<DefineConstants>ns20;netstandard20</DefineConstants>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
 		<DefineConstants>net40</DefineConstants>
 	</PropertyGroup>

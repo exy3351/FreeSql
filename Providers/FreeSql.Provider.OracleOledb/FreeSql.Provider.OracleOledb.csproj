@@ -17,20 +17,25 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
 		<DelaySign>false</DelaySign>
-		<Version>3.2.666-preview20220826</Version>
+		<!--<Version>3.2.666-preview20220826</Version>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
-	<ItemGroup >
-		<PackageReference Include="System.Data.OleDb" Version="6.0.0" />
+	<ItemGroup  Condition="'$(TargetFramework)' == 'net5.0'">
+		<PackageReference Include="System.Data.Odbc" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup  Condition="'$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="System.Data.Odbc" Version="6.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Include="../FreeSql.Provider.Oracle/**/*.cs" Exclude="../FreeSql.Provider.Oracle/obj/**/*" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Remove="..\FreeSql.Provider.Oracle\OracleUtils.cs" />
 	</ItemGroup>
@@ -41,10 +46,6 @@
 
 	<PropertyGroup>
 		<DefineConstants>oledb</DefineConstants>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net40'">
-		<DefineConstants>net40;oledb</DefineConstants>
 	</PropertyGroup>
 
 </Project>

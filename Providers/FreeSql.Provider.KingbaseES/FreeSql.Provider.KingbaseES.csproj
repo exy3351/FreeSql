@@ -14,13 +14,15 @@
 		<Title>$(AssemblyName)</Title>
 		<IsPackable>true</IsPackable>
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<Version>3.2.666-preview20220826</Version>
+		<!--<Version>3.2.666-preview20220826</Version>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
 		<None Include="lib\Kdbndp.dll" Pack="true" PackagePath="\lib\netstandard2.0\" />
 		<None Include="lib\Kdbndp.dll" Pack="true" PackagePath="\lib\net461\" />
+		<None Include="lib\Kdbndp.dll" Pack="true" PackagePath="\lib\net48\" />
+
 		<None Include="lib/**/*.dll">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

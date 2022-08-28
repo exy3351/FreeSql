@@ -2,13 +2,15 @@
 	<PropertyGroup>
 		<TargetFrameworks>net48;net5.0;net6.0;</TargetFrameworks>
 		<LangVersion>preview</LangVersion>
-		
+
 		<RepositoryUrl>https://github.com/dotnetcore/FreeSql</RepositoryUrl>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+		<Version>3.2.666</Version>
 	</PropertyGroup>
 
 	<!--
@@ -17,7 +19,7 @@
 		<Version>3.2.666-preview20220826</Version>
 	</PropertyGroup>
 	-->
-	
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
 	</ItemGroup>

@@ -17,23 +17,19 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
 		<DelaySign>false</DelaySign>
-		<Version>3.2.666-preview20220826</Version>
+		<!--<Version>3.2.666-preview20220826</Version>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="../../logo.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-		<PackageReference Include="Oracle.ManagedDataAccess.Core" Version="2.19.130" />
-	</ItemGroup>
-
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net5.0'">
-		<PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.61" />
+		<PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.70" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net48' ">
-		<PackageReference Include="Oracle.ManagedDataAccess" Version="19.14.0" />
+		<PackageReference Include="Oracle.ManagedDataAccess" Version="21.7.0" />
 	</ItemGroup>
 
 	<ItemGroup>
